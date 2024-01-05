@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:apple_product_name/apple_product_name.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
 Future<(String model, String version)> getDeviceInformation() async {
@@ -12,7 +13,7 @@ Future<(String model, String version)> getDeviceInformation() async {
     version = androidInfo.version.release;
   } else if (Platform.isIOS) {
     IosDeviceInfo iosInfo = await deviceInfoPlugin.iosInfo;
-    model = iosInfo.utsname.machine;
+    model = iosInfo.utsname.productName;
     version = iosInfo.systemVersion;
   }
   return (model, version);
